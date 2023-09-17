@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <svg
+          style="color: #f3da35"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+        >
+          <path
+            fill="#f3da35"
+            d="M472,40H40A24.028,24.028,0,0,0,16,64V448a24.028,24.028,0,0,0,24,24H472a24.028,24.028,0,0,0,24-24V64A24.028,24.028,0,0,0,472,40Zm-8,400H48V72H464Z"
+            class="ci-primary"
+          ></path>
+          <polygon
+            fill="var(--ci-primary-color, currentColor)"
+            points="152 240 184 240 184 200 224 200 224 168 184 168 184 128 152 128 152 168 112 168 112 200 152 200 152 240"
+            class="ci-primary"
+          ></polygon>
+          <polygon
+            fill="var(--ci-primary-color, currentColor)"
+            points="196.284 285.089 168 313.373 139.716 285.089 117.089 307.716 145.373 336 117.089 364.284 139.716 386.911 168 358.627 196.284 386.911 218.911 364.284 190.627 336 218.911 307.716 196.284 285.089"
+            class="ci-primary"
+          ></polygon>
+          <rect
+            width="112"
+            height="32"
+            x="288"
+            y="168"
+            fill="var(--ci-primary-color, currentColor)"
+            class="ci-primary"
+          ></rect>
+          <rect
+            width="112"
+            height="32"
+            x="288"
+            y="288"
+            fill="var(--ci-primary-color, currentColor)"
+            class="ci-primary"
+          ></rect>
+          <rect
+            width="112"
+            height="32"
+            x="288"
+            y="352"
+            fill="var(--ci-primary-color, currentColor)"
+            class="ci-primary"
+          ></rect>
+        </svg>
+        <div class="div">
+          <h1>Mi primer automata finito :)</h1>
+          <p>
+            Ingresa cadenas que esten dentro del rango DTA-001-A a ETZ-999-Z
+          </p>
+          <p><b>Nota:</b> Ingresa una cadena sin espacios en blanco</p>
+          <input class="input" type="text" name="string" id="string" placeholder="Ingresa la cadena a validar">
+          <button class="button" id="btn_send">Validar</button>
+        </div>
+      </header>
+      <div id="svg-container">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <text x="0" y="200" text-anchor="middle" fill="black">-------></text>
+
+          <circle cx="50" cy="200" r="25" fill="white" stroke="black" stroke-width="2" id="q0" />
+          <text x="50" y="200" text-anchor="middle" alignment-baseline="central" fill="black">q0</text>
+
+          <text x="100" y="200" text-anchor="middle" fill="black">D...E</text>
+          <text x="100" y="205" text-anchor="middle" fill="black">-----></text>
+
+          <circle cx="150" cy="200" r="25" fill="white" stroke="black" stroke-width="2" id="q1" />
+          <text x="150" y="200" text-anchor="middle" alignment-baseline="central" fill="black">q1</text>
+
+          <text x="190" y="200" text-anchor="middle" fill="black">T</text>
+          <text x="190" y="205" text-anchor="middle" fill="black">---></text>
+
+          <circle cx="230" cy="200" r="25" fill="white" stroke="black" stroke-width="2" id="q2" />
+          <text x="230" y="200" text-anchor="middle" alignment-baseline="central" fill="black">q2</text>
+
+          <text x="275" y="200" text-anchor="middle" fill="black">A...Z</text>
+          <text x="280" y="205" text-anchor="middle" fill="black">------></text>
+
+          <circle cx="325" cy="200" r="25" fill="white" stroke="black" stroke-width="2" id="q3" />
+          <text x="325" y="200" text-anchor="middle" alignment-baseline="central" fill="black">q3</text>
+
+          <text x="360" y="200" text-anchor="middle" fill="black">-</text>
+          <text x="365" y="205" text-anchor="middle" fill="black">---></text>
+
+          <circle cx="400" cy="200" r="25" fill="white" stroke="black" stroke-width="2" id="q4" />
+          <text x="400" y="200" text-anchor="middle" alignment-baseline="central" fill="black">q4</text>
+
+          <line x1="400" y1="175" x2="470" y2="100" stroke="black" stroke-width="1" />
+          <text x="485" y="90" text-anchor="middle" fill="black">1...9</text>
+          <text x="490" y="100" text-anchor="middle" fill="black">------></text>
+
+          <circle cx="535" cy="95" r="25" fill="white" stroke="black" stroke-width="2" id="q5" />
+          <text x="535" y="95" text-anchor="middle" alignment-baseline="central" fill="black">q5</text>
+
+          <text x="580" y="90" text-anchor="middle" fill="black">0...9</text>
+          <text x="580" y="100" text-anchor="middle" fill="black">------></text>
+
+          <circle cx="625" cy="95" r="25" fill="white" stroke="black" stroke-width="2" id="q6" />
+          <text x="625" y="95" text-anchor="middle" alignment-baseline="central" fill="black">q6</text>
+
+          <text x="665" y="90" text-anchor="middle" fill="black">0...9</text>
+          <text x="670" y="100" text-anchor="middle" fill="black">-----></text>
+
+          <circle cx="715" cy="95" r="25" fill="white" stroke="black" stroke-width="2" id="q7" />
+          <text x="715" y="95" text-anchor="middle" alignment-baseline="central" fill="black">q7</text>
+
+          <text x="750" y="90" text-anchor="middle" fill="black">-</text>
+          <text x="760" y="100" text-anchor="middle" fill="black">-----></text>
+
+          <circle cx="805" cy="95" r="25" fill="white" stroke="black" stroke-width="2" id="q8" />
+          <text x="805" y="95" text-anchor="middle" alignment-baseline="central" fill="black">q8</text>
+
+          <text x="850" y="90" text-anchor="middle" fill="black">A...Z</text>
+          <text x="855" y="100" text-anchor="middle" fill="black">-------></text>
+
+          <circle cx="905" cy="95" r="25" fill="white" stroke="black" stroke-width="2" id="q9" />
+          <circle cx="905" cy="95" r="20" fill="white" stroke="black" stroke-width="2" id="q9" />
+          <text x="905" y="95" text-anchor="middle" alignment-baseline="central" fill="black">q9</text>
+
+          <line x1="400" y1="225" x2="470" y2="300" stroke="black" stroke-width="1" />
+          <text x="485" y="300" text-anchor="middle" fill="black">0</text>
+          <text x="490" y="305" text-anchor="middle" fill="black">------></text>
+
+          <circle cx="535" cy="300" r="25" fill="white" stroke="black" stroke-width="2" id="q10" />
+          <text x="535" y="300" text-anchor="middle" alignment-baseline="central" fill="black">q10</text>
+
+          <line x1="650" y1="225" x2="560" y2="300" stroke="black" stroke-width="1" />
+          <text x="660" y="225" text-anchor="middle" fill="black">---></text>
+          <text x="655" y="215" text-anchor="middle" fill="black">1...9</text>
+
+          <circle cx="700" cy="225" r="25" fill="white" stroke="black" stroke-width="2" id="q11" />
+          <text x="700" y="225" text-anchor="middle" alignment-baseline="central" fill="black">q11</text>
+
+          <text x="740" y="220" text-anchor="middle" fill="black">0...9</text>
+          <text x="745" y="225" text-anchor="middle" fill="black">-----></text>
+
+          <circle cx="790" cy="225" r="25" fill="white" stroke="black" stroke-width="2" id="q12" />
+          <text x="790" y="225" text-anchor="middle" alignment-baseline="central" fill="black">q12</text>
+
+          <text x="825" y="220" text-anchor="middle" fill="black">-</text>
+          <text x="830" y="225" text-anchor="middle" fill="black">----></text>
+
+          <circle cx="870" cy="220" r="25" fill="white" stroke="black" stroke-width="2" id="q13" />
+          <text x="870" y="220" text-anchor="middle" alignment-baseline="central" fill="black">q13</text>
+
+          <text x="915" y="215" text-anchor="middle" fill="black">A...Z</text>
+          <text x="918" y="220" text-anchor="middle" fill="black">------></text>
+
+          <circle cx="965" cy="215" r="25" fill="white" stroke="black" stroke-width="2" id="q14" />
+          <circle cx="965" cy="215" r="20" fill="white" stroke="black" stroke-width="2" id="q14" />
+          <text x="965" y="215" text-anchor="middle" alignment-baseline="central" fill="black">q14</text>
+
+          <line x1="650" y1="370" x2="560" y2="300" stroke="black" stroke-width="1" />
+          <text x="665" y="375" text-anchor="middle" fill="black">---></text>
+          <text x="660" y="370" text-anchor="middle" fill="black">0</text>
+
+          <circle cx="705" cy="370" r="25" fill="white" stroke="black" stroke-width="2" id="q15" />
+          <text x="705" y="370" text-anchor="middle" alignment-baseline="central" fill="black">q15</text>
+
+          <text x="745" y="370" text-anchor="middle" fill="black">1...9</text>
+          <text x="750" y="375" text-anchor="middle" fill="black">------></text>
+
+          <circle cx="795" cy="370" r="25" fill="white" stroke="black" stroke-width="2" id="q16" />
+          <text x="795" y="370" text-anchor="middle" alignment-baseline="central" fill="black">q16</text>
+
+          <text x="830" y="370" text-anchor="middle" fill="black">-</text>
+          <text x="833" y="375" text-anchor="middle" fill="black">---></text>
+
+          <circle cx="870" cy="370" r="25" fill="white" stroke="black" stroke-width="2" id="q17" />
+          <text x="870" y="370" text-anchor="middle" alignment-baseline="central" fill="black">q17</text>
+
+          <text x="915" y="370" text-anchor="middle" fill="black">A...Z</text>
+          <text x="920" y="375" text-anchor="middle" fill="black">--------></text>
+
+          <circle cx="970" cy="370" r="25" fill="white" stroke="black" stroke-width="2" id="q18" />
+          <circle cx="970" cy="370" r="20" fill="white" stroke="black" stroke-width="2" id="q18" />
+          <text x="970" y="370" text-anchor="middle" alignment-baseline="central" fill="black">q18</text>
+        </svg>
+      </div>
+    </main>
+  </body>
+  <script src="index.js"></script>
+</html>
