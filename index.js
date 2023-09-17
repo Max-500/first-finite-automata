@@ -5,47 +5,48 @@ let strings = [];
 const alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "Ñ", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
+const inputElement = document.getElementById('string');
+
+const q14 = document.getElementById('q14F');
+const q18 = document.getElementById('q18F');
+
 for(let i = 0; i < 19; i++){
     states[i] = document.getElementById('q'+i);
 }
 
 function validate(){
-    const inputElement = document.getElementById('string');
     const string = inputElement.value;
-
     states[0].setAttribute('fill', '#5CB85C');
 
     for(const element of string){
         strings.push(element);
     }
 
-    console.log(strings);
-
     if(strings[0] === "D" || strings[0] === "E"){
         states[1].setAttribute('fill', '#5CB85C');
     }else{
-        states[1].setAttribute('fill', "red")
+        setTimeout(error, 1000);
         return;
     }
 
     if(strings[1] === "T"){
         states[2].setAttribute('fill', '#5CB85C');
     }else{
-        states[2].setAttribute('fill', 'red');
+        setTimeout(error, 1000);
         return;
     }
 
     if(alphabet.includes(strings[2])){
         states[3].setAttribute('fill', '#5CB85C');
     }else{
-        states[3].setAttribute('fill', 'red');
+        setTimeout(error, 1000);
         return;
     }
 
     if(strings[3] === "-"){
         states[4].setAttribute('fill', '#5CB85C');
     }else{
-        states[4].setAttribute('fill', 'red');
+        setTimeout(error, 1000);
         return;
     }
 
@@ -57,43 +58,40 @@ function validate(){
         states[5].setAttribute('fill', '#5CB85C');
         firstCase();
     }else{
-        states[5].setAttribute('fill', 'red');
-        states[10].setAttribute('fill', 'red');
+        setTimeout(error, 1000);
         return;
     }
-
-    inputElement.value = '';
-    strings = [];
 }
 
 function firstCase(){
     if(numbers.includes(strings[5])){
         states[6].setAttribute('fill', '#5CB85C');
     }else{
-        states[6].setAttribute('fill', 'red');
+        setTimeout(error, 2000);
         return;
     }
 
     if(numbers.includes(strings[6])){
         states[7].setAttribute('fill', '#5CB85C');
     }else{
-        states[7].setAttribute('fill', 'red');
+        setTimeout(error, 2000);
         return;
     }
 
     if(strings[7] === "-"){
         states[8].setAttribute('fill', '#5CB85C');
     }else{
-        states[8].setAttribute('fill', 'red');
+        setTimeout(error, 2000);
         return;
     }
 
     if(alphabet.includes(strings[8])){
         states[9].setAttribute('fill', '#5CB85C');
-        document.getElementById('q9F').setAttribute('fill', '#5CB85C')
-
+        const q9F = document.getElementById('q9F');
+        q9F.setAttribute('fill', '#5CB85C');
+        setTimeout(correct(q9F), 4000);
     }else{
-        states[9].setAttribute('fill', 'red');
+        setTimeout(error, 2000);
         return;
     }
 }
@@ -102,33 +100,34 @@ function secondCase(){
     if(strings[5] === "0"){
         states[15].setAttribute('fill', '#5CB85C');
         thirdCase();
+        return;
     }else if(numbers.includes(strings[5])){
         states[11].setAttribute('fill', '#5CB85C');
     }else{
-        states[11].setAttribute('fill', 'red');
+        setTimeout(error, 2000);
         return;
     }
 
     if(numbers.includes(strings[6])){
         states[12].setAttribute('fill', '#5CB85C');
     }else{
-        states[12].setAttribute('fill', 'red');
+        setTimeout(error, 2000);
         return;
     }
 
     if(strings[7] === "-"){
         states[13].setAttribute('fill', '#5CB85C');
     }else{
-        states[13].setAttribute('fill', 'red');
+        setTimeout(error, 2000);
         return;
     }
 
     if(alphabet.includes(strings[8])){
         states[14].setAttribute('fill', '#5CB85C');
-        document.getElementById('q14F').setAttribute('fill', '#5CB85C')
-
+        q14.setAttribute('fill', '#5CB85C');
+        setTimeout(correct(q14), 4000);
     }else{
-        states[9].setAttribute('fill', 'red');
+        setTimeout(error, 2000);
         return;
     }
 }
@@ -137,23 +136,62 @@ function thirdCase(){
     if(numbers.includes(strings[6])){
         states[16].setAttribute('fill', '#5CB85C');
     }else{
-        states[16].setAttribute('fill', 'red');
+        setTimeout(error, 2000);
+        return;
     }
 
     if(strings[7] === "-"){
         states[17].setAttribute('fill', '#5CB85C');
     }else{
-        states[17].setAttribute('fill', 'red');
+        setTimeout(error, 2000);
+        return;
     }
 
     if(alphabet.includes(strings[8])){
         states[18].setAttribute('fill', '#5CB85C');
-        document.getElementById('q18F').setAttribute('fill', '#5CB85C')
-
+        q18.setAttribute('fill', '#5CB85C')
+        setTimeout(correct(q18), 4000)
     }else{
-        states[18].setAttribute('fill', 'red');
+        setTimeout(error, 2000);
         return;
     }
+}
+
+function correct(element){
+    Swal.fire({
+        title: "Sucess!!!",
+        text: 'El automata es valido',
+        icon: 'success',
+        timer: 3000,
+        timerProgressBar: true,
+        showConfirmButton: false
+    }).then(() => {
+        for(const element of states){
+            element.setAttribute('fill', 'white')
+        }
+        element.setAttribute('fill', 'white')
+    })
+
+    inputElement.value = '';
+    strings = [];
+}
+
+function error(){
+    Swal.fire({
+        title: "Warning!!!",
+        text: 'El automata NO es valido',
+        icon: 'error',
+        timer: 3000,
+        timerProgressBar: true,
+        showConfirmButton: false
+    }).then(() => {
+        for(const element of states){
+            element.setAttribute('fill', 'white')
+        }
+    })
+
+    inputElement.value = '';
+    strings = [];
 }
 
 btn.addEventListener('click', validate);
