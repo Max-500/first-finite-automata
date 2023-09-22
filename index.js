@@ -17,6 +17,11 @@ for(let i = 0; i < 19; i++){
 function validate(){
     const string = inputElement.value;
     states[0].setAttribute('fill', '#5CB85C');
+    
+    if(string.length > 9){
+        setTimeout(error, 2000);
+        return;
+    }
 
     for(const element of string){
         strings.push(element);
