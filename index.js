@@ -1,4 +1,5 @@
 const btn = document.getElementById('btn_send');
+const btn_clean = document.getElementById('btn_clean')
 
 const states = [];
 let strings = [];
@@ -7,6 +8,7 @@ const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
 const inputElement = document.getElementById('string');
 
+const q9 = document.getElementById('q9F')
 const q14 = document.getElementById('q14F');
 const q18 = document.getElementById('q18F');
 
@@ -94,7 +96,7 @@ function firstCase(){
         states[9].setAttribute('fill', '#5CB85C');
         const q9F = document.getElementById('q9F');
         q9F.setAttribute('fill', '#5CB85C');
-        setTimeout(correct(q9F), 4000);
+        setTimeout(correct, 4000);
     }else{
         setTimeout(error, 2000);
         return;
@@ -130,7 +132,7 @@ function secondCase(){
     if(alphabet.includes(strings[8])){
         states[14].setAttribute('fill', '#5CB85C');
         q14.setAttribute('fill', '#5CB85C');
-        setTimeout(correct(q14), 4000);
+        setTimeout(correct, 4000);
     }else{
         setTimeout(error, 2000);
         return;
@@ -155,14 +157,14 @@ function thirdCase(){
     if(alphabet.includes(strings[8])){
         states[18].setAttribute('fill', '#5CB85C');
         q18.setAttribute('fill', '#5CB85C')
-        setTimeout(correct(q18), 4000)
+        setTimeout(correct, 4000)
     }else{
         setTimeout(error, 2000);
         return;
     }
 }
 
-function correct(element){
+function correct(){
     Swal.fire({
         title: "Sucess!!!",
         text: 'El automata es valido',
@@ -170,11 +172,6 @@ function correct(element){
         timer: 3000,
         timerProgressBar: true,
         showConfirmButton: false
-    }).then(() => {
-        for(const element of states){
-            element.setAttribute('fill', 'white')
-        }
-        element.setAttribute('fill', 'white')
     })
 
     inputElement.value = '';
@@ -189,10 +186,6 @@ function error(){
         timer: 3000,
         timerProgressBar: true,
         showConfirmButton: false
-    }).then(() => {
-        for(const element of states){
-            element.setAttribute('fill', 'white')
-        }
     })
 
     inputElement.value = '';
@@ -200,3 +193,11 @@ function error(){
 }
 
 btn.addEventListener('click', validate);
+btn_clean.addEventListener('click', () => {
+    for(const element of states){
+        element.setAttribute('fill', 'white')
+    }
+    q14.setAttribute('fill', 'white')
+    q18.setAttribute('fill', 'white')
+    q9.setAttribute('fill', 'white')
+})

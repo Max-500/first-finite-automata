@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>My First Automata</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -59,11 +59,14 @@
           <p>
             Ingresa cadenas que esten dentro del rango DTA-001-A a ETZ-999-Z
             <br>
-            Para que esto funcione <b>necesita tener internet</b>
+            Para que esto funcione <b>necesita tener un buen internet ya que se esta usando el CDN de Sweet Alert</b>
           </p>
-          <p><b>Nota:</b> Ingresa una cadena sin espacios en blanco</p>
+          <p><b>Nota:</b> Ingresa una cadena sin espacios en blanco, que no supere de los 9 caracteres, ya que <br> en ese caso no pasara de q1.</p>
           <input class="input" type="text" name="string" id="string" placeholder="Ingresa la cadena a validar">
-          <button class="button" id="btn_send">Validar</button>
+          <div class="div_btns">
+            <button class="button" id="btn_send">Validar</button>
+            <button class="button" id="btn_clean">Limpiar</button>
+          </div>
         </div>
       </header>
       <div id="svg-container">
