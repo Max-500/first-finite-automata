@@ -6,6 +6,9 @@ let strings = [];
 const alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "Ñ", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
+const alphabetD = ["T", "U", "V", "W", "X", "Y", "Z"];
+const alphabetE = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "Ñ", "O", "P", "Q", "R", "S", "T"];
+
 const inputElement = document.getElementById('string');
 
 const q9 = document.getElementById('q9F')
@@ -29,15 +32,24 @@ function validate(){
         strings.push(element);
     }
 
-    if(strings[0] === "D" || strings[0] === "E"){
+    if(strings[0] === "D"){
         states[1].setAttribute('fill', '#5CB85C');
-    }else{
-        setTimeout(error, 1000);
-        return;
-    }
-
-    if(strings[1] === "T"){
-        states[2].setAttribute('fill', '#5CB85C');
+        if(alphabetD.includes(strings[1])){
+            states[2].setAttribute('fill', '#5CB85C');
+        }else{
+            alert("Aqui hay un error")
+            setTimeout(error, 1000);
+            return;
+        }
+    }else if(strings[0] === "E"){
+        states[1].setAttribute('fill', '#5CB85C');
+        if(alphabetE.includes(strings[1])){
+            states[2].setAttribute('fill', '#5CB85C');
+        }else{
+            alert("Aqui hay un error")
+            setTimeout(error, 1000);
+            return;
+        }
     }else{
         setTimeout(error, 1000);
         return;
